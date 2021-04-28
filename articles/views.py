@@ -108,7 +108,8 @@ def delete_article_view(request, section, article_id):
             article.delete()
             return redirect('article_view', section, 0)
 
-        params = {'sections': sections, 'section': section, 'article_id': article_id}
+        article_name = Article.objects.get(id=article_id).header
+        params = {'sections': sections, 'section': section, 'article_id': article_id, 'article_name': article_name}
         return render(request, 'articles/delete_article.html', params)
     else:
         error_status = '403'

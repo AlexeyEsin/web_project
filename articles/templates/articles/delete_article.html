@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="delete-article-view">
-        <div class="submit-delete-label">Вы действительно хотите удалить статью?</div>
+        <div class="submit-delete-label">Вы действительно хотите удалить статью "{{ article_name }}"?</div>
         <form method="post">
             {% csrf_token %}
             <button class="btn btn-danger btn-delete" type="submit">Удалить статью</button>

@@ -25,7 +25,7 @@ SECRET_KEY = 'dioz-asy+ux6im*&0(i*xj(eq8e+i6(_*^bd-_dmoqq$tu2@29'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['u1329398.isp.regruhosting.ru', 'www.u1329398.isp.regruhosting.ru']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -84,11 +84,12 @@ WSGI_APPLICATION = 'web_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'u1329398_web_db',
-        'USER': 'u1329398_web_use',
-        'PASSWORD': 'fI9eO2hP4iyA4v',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'web_project_db', 
+        'USER': 'postgres', 
+        'PASSWORD': 'psqladmin',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 

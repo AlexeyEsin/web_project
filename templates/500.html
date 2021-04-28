@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+    500. Ошибка сервера
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/error.css' %}">
+{% endblock styles %}
+
+{% block error %}
+    <div class="error-content">
+        <div class="error-status">500</div>
+        <div class="error-message">Ошибка сервера</div>
+        <hr class="horizontal-line">
+        <div class="error-description">
+            На сервере произошла ошибка. Вы можете воспользоваться меню наверху страницы или перейти 
+            <a class="home" href="{% url 'home' %}">на главную</a>.
+        </div>
+    </div>
+{% endblock error %}
