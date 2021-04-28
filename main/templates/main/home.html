@@ -1,0 +1,37 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Главная
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/home.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <div class="home-content">
+        <div class="welcome-label">
+            ДОБРО ПОЖАЛОВАТЬ НА САЙТ
+        </div>
+        <div class="description-text">
+            Здесь вы найдёте статьи по HTML, CSS и JavaScript на интересующие вас темы.
+            На сайте пока содержится небольшое количество статей, но в будущем их количество увеличится.
+        </div>
+        <div class="about-text">
+            Сайт разработан с использованием языка программирования Python и фреймворка Django.
+            В качестве текстового редактора был использован CKEditor, реализованный с помощью пакета django-ckeditor.
+            Визуальная часть сайта выполнена с применением фреймворка Bootstrap и некоторых пакетов Django. 
+        </div>
+        {% if not user.is_authenticated %}
+            <div class="login-label">
+                <p>Для просмотра информации на сайте <a href="/login">войдите в аккаунт</a></p>
+            </div>
+        {% endif %}
+        <div class="author-label">
+            Автор проекта: Есин Алексей
+        </div>
+    </div>
+
+{% endblock content %}

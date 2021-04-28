@@ -1,0 +1,40 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load auth_extras %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Редактировать статью
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'articles/css/update_article.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media }}
+
+    
+    <div class="update-article-view">
+        {% if request.user|has_group:'Редактор' or request.user.is_superuser %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {% if error %}
+                    <span class="error-label">{{ error }}</span><br>
+                {% endif %}
+                <div class="tip-label">* — поля обязательны для заполнения</div>
+                <div class="edit-buttons">
+                    <button class="btn btn-success btn-save" type="submit">Сохранить</button>
+                    <button class="btn btn-light btn-cancel" type="reset" onclick="location.href='{% url "article_view" section article_id %}';">Отмена</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+    
+
+{% endblock content %}

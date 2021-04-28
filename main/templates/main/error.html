@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ error_status }}. {{ error_message }}
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/error.css' %}">
+{% endblock styles %}
+
+{% block error %}
+    <div class="error-content">
+        <div class="error-status">{{ error_status }}</div>
+        <div class="error-message">{{ error_message }}</div>
+        <hr class="horizontal-line">
+        <div class="error-description">
+            {{ error_description }} Вы можете воспользоваться меню наверху страницы или перейти 
+            <a class="home" href="{% url 'home' %}">на главную</a>.
+        </div>
+    </div>
+{% endblock error %}

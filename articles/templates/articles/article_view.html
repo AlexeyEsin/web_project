@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block title %}
+    Статьи {{ selected_section.name }}
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'articles/css/article_view.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <div class="article-view-content">
+        <div class="article-nav">
+            <div class="article-nav-header">Статьи {{ selected_section.name }}</div>
+            <ul class="article-list">
+                {% for article in selected_section.article_set.all %}
+                    {% if selected_article.id == article.id %}
+                        <li><a href={% url 'article_view' selected_section.name article.id %} class="article active">{{ article.header }}</a></li>
+                    {% else %}
+                        <li><a href={% url 'article_view' selected_section.name article.id %} class="article">{{ article.header }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if request.user|has_group:'Редактор' or request.user.is_superuser %}
+                <a class="btn-add" href="{% url 'create_article' %}"><button class="btn btn-primary">Добавить</button></a>
+            {% endif %}
+        </div>
+        <div class="article-view">
+            {% if selected_article %}
+                <div class="article-header">{{ selected_article.header }}</div>
+                <div class="article-content">{{ selected_article.content|safe }}</div>
+                <div class="article-publication-date">Дата публикации: {{ selected_article.publication_date }}</div>
+                {% if request.user|has_group:'Редактор' or request.user.is_superuser %}
+                    <div class="edit-buttons">
+                        <a class="btn-edit" href="{% url 'update_article' selected_section.name selected_article.id %}"><button class="btn btn-success">Редактировать</button></a>
+                        <a class="btn-delete" href="{% url 'delete_article' selected_section.name selected_article.id %}"><button class="btn btn-danger">Удалить</button></a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="no-articles">
+                    В данном разделе пока ещё нет статей
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

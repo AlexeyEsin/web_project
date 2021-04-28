@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block title %}
+    Удалить статью
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'articles/css/delete_article.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <div class="delete-article-view">
+        <div class="submit-delete-label">Вы действительно хотите удалить статью?</div>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger btn-delete" type="submit">Удалить статью</button>
+            <button class="btn btn-light btn-cancel" type="reset" onclick="location.href='{% url "article_view" section article_id %}';">Отмена</button>
+        </form>
+    </div>
+
+{% endblock content %}

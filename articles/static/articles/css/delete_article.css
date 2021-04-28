@@ -1,0 +1,33 @@
+.top-navigation {
+    margin-left: 20%;
+}
+
+.delete-article-view {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    margin: 2% 20%;
+	padding: 2% 4%;
+    background: #2a2a2a;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.submit-delete-label {
+    font-size: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+.btn-delete, .btn-cancel {
+    align-self: center;
+}
+
+.btn-cancel {
+    margin-left: 5%;
+}

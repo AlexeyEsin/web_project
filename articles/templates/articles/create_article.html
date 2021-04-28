@@ -1,0 +1,37 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load auth_extras %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Добавить статью
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'articles/css/create_article.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media }}
+
+    <div class="create-article-view">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if error %}
+                <span class="error-label">{{ error }}</span><br>
+            {% endif %}
+            <div class="tip-label">* — поля обязательны для заполнения</div>
+            <div class="edit-buttons">
+                <button class="btn btn-success btn-add" type="submit">Добавить статью</button>
+                <button class="btn btn-light btn-cancel" type="reset" onclick="location.href='{% url "home" %}';">Отмена</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
