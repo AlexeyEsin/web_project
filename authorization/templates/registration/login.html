@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'authorization/css/login.css' %}">
 {% endblock styles %}
 
-{% block login_form %}
+{% block content %}
     <div class="login-content">
         <form method="POST" class="form-group">
             {% csrf_token %}
@@ -19,6 +19,4 @@
             <button type="submit" class="btn btn-success">Войти</button>
         </form>
     </div>
-
-    <script type="text/javascript" src="{% static 'authorization/js/remove_login_label.js' %}"></script>
-{% endblock login_form %}
+{% endblock content %}

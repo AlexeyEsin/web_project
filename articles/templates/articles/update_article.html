@@ -17,7 +17,6 @@
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
     {{ form.media }}
-
     
     <div class="update-article-view">
         {% if request.user|has_group:'Редактор' or request.user.is_superuser %}
@@ -35,6 +34,4 @@
             </form>
         {% endif %}
     </div>
-    
-
 {% endblock content %}

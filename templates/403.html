@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/error.css' %}">
 {% endblock styles %}
 
-{% block error %}
+{% block content %}
     <div class="error-content">
         <div class="error-status">403</div>
         <div class="error-message">Доступ ограничен</div>
@@ -19,4 +19,4 @@
             <a class="home" href="{% url 'home' %}">на главную</a>.
         </div>
     </div>
-{% endblock error %}
+{% endblock content %}
